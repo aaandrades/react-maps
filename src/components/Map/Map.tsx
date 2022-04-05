@@ -7,7 +7,7 @@ import {
   Polygon,
   useMapEvent,
 } from "react-leaflet";
-import { points } from "../../models";
+import { points } from "../../statics/DefaultPoints";
 import { IPoint } from "../../Models/Interfaces";
 
 export const Map = () => {
@@ -41,8 +41,8 @@ export const Map = () => {
     <div id="map">
       <button onClick={() => setDrawPolygon(!drawPolygon)}>Set Drawing</button>
       <MapContainer
-        center={[4.5783381, -74.1357403]}
-        zoom={15}
+        center={[40.7326897662857, -73.92562866210939]}
+        zoom={11}
         className="contenido"
       >
         <TileLayer
@@ -51,6 +51,7 @@ export const Map = () => {
         />
         {markers.map((marker) => (
           <Marker
+            key={marker._id.$oid}
             position={[
               marker.location.coordinates[1],
               marker.location.coordinates[0],
@@ -58,8 +59,8 @@ export const Map = () => {
           >
             <Popup>
               <div>
-                <h1>Un header exageradito</h1>
-                <p>Vamos a volvernos locos</p>
+                <h1>{marker.name}</h1>
+                <p>{marker.description}</p>
               </div>
             </Popup>
           </Marker>
