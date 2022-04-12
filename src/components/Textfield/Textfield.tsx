@@ -1,9 +1,15 @@
 import { ITextfield } from "../../Models/Interfaces";
 import "./styles.scss";
 
-const Textfield = ({ label, onChange, value, placeholder }: ITextfield) => {
+const Textfield = ({
+  label,
+  onChange,
+  value,
+  placeholder,
+  className,
+}: ITextfield) => {
   return (
-    <div className="input-container">
+    <div className={`${className} input-container`}>
       <label htmlFor="input" className="input-container__label">
         {label}
       </label>

@@ -11,20 +11,34 @@ export const SearchBar = () => {
     <div className="search-bar">
       <div className="search-bar__search">
         <Textfield
-          label="Buscar"
+          label="Look for something"
           value={search}
           placeholder="Ej: Bar"
+          className="search-bar__textfield"
           onChange={(e) => setSearch(e.target?.value)}
         />
-        <Button onClick={() => console.log("Click")}>Buscar</Button>
+        <Button
+          onClick={() => console.log("Click: ", search)}
+          className="search-bar__button"
+          disabled={!search}
+        >
+          Search
+        </Button>
       </div>
-      <button type="button" onClick={() => setShowSearchBar(!showSearchBar)}>
-        X
-      </button>
+      <div className="search-bar__footer">
+        <span
+          role="button"
+          tabIndex={0}
+          className="search-bar__options"
+          onClick={() => setShowSearchBar(!showSearchBar)}
+        >
+          More options
+        </span>
+      </div>
       <div
         className={showSearchBar ? "search-bar__open" : "search-bar__closed"}
       >
-        Show/Close searchbar
+        Contenido
       </div>
     </div>
   );

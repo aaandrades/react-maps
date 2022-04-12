@@ -13,6 +13,7 @@ export interface IPoint {
 export interface ITextfield {
   label: string;
   value: string;
+  className?: string;
   placeholder: string;
   onChange(e: any): void;
 }
