@@ -9,9 +9,10 @@ import {
 } from "react-leaflet";
 import { points } from "../../statics/DefaultPoints";
 import { IPoint } from "../../Models/Interfaces";
+import "./styles.scss";
 
 export const Map = () => {
-  const [markers, setMarkers] = useState<IPoint[]>(points);
+  const [markers, setMarkers] = useState<any[]>(points);
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
   const [drawPolygon, setDrawPolygon] = useState<any>(false);
 
@@ -39,11 +40,11 @@ export const Map = () => {
 
   return (
     <div id="map">
-      <button onClick={() => setDrawPolygon(!drawPolygon)}>Set Drawing</button>
       <MapContainer
         center={[40.7326897662857, -73.92562866210939]}
         zoom={11}
-        className="contenido"
+        tap={false}
+        className="map-container"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

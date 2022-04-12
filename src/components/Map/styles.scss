@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+#map {
+  height: 100%;
+  width: 100vw;
+}
+
+.map-container {
+  height: 100vh;
+}
+
+.leaflet-left {
+  left: 95vw;
+}
+
+.leaflet-top {
+  top: 90vh;
+  @media screen and (max-width: $mobile-600) {
+    display: none;
+  }
+}

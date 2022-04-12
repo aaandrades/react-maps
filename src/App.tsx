@@ -4,12 +4,10 @@ import { Map } from "./components/Map/Map";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 
 const App = () => {
-  useEffect(() => {
-    
-  }, [])
-  
+  useEffect(() => {}, []);
+
   return (
-    <div className="">
+    <div className="app">
       <SearchBar />
       <Map />
     </div>
