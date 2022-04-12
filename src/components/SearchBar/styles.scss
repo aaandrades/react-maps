@@ -1,3 +1,35 @@
-.change-class {
-  background-color: red;
+@import "../../styles/variables";
+
+.search-bar {
+  width: 30%;
+  max-width: 400px;
+  position: absolute;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  z-index: 401;
+  background-color: $white;
+
+  @media screen and (max-width: $mobile-600) {
+    width: 100%;
+    right: 0%;
+    left: 0%;
+    max-width: -webkit-fill-available;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+  }
+
+  &__open {
+    height: 85vh;
+    transition: height 100ms ease-in;
+  }
+
+  &__closed {
+    height: 0;
+    overflow: hidden;
+    transition: height 100ms ease-out;
+  }
 }
