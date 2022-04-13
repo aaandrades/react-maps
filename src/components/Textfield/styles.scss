@@ -23,4 +23,13 @@
       line-height: 3;
     }
   }
+
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: $gray-600;
+    font-size: 1.2rem;
+  }
 }
