@@ -1,4 +1,5 @@
-const points = [
+import { IPoint } from "../Models/Interfaces";
+const points: IPoint[] = [
   {
     _id: { $oid: "55cba2486c522cafdb059d6e" },
     description:

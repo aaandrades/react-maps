@@ -7,7 +7,7 @@
   &__label {
     cursor: pointer;
     padding-left: 8px;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     font-size: 1rem;
     color: $gray-600;
   }
@@ -15,12 +15,21 @@
     padding: 10px;
     font-size: 1rem;
     border-radius: 7px;
-    outline-color: $blue-100;
+    outline-color: $blue-300;
     border: 1px solid $gray-300;
 
     &::-webkit-input-placeholder {
       font-size: 0.9rem;
       line-height: 3;
     }
+  }
+
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: $gray-600;
+    font-size: 1.2rem;
   }
 }

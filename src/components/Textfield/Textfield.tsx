@@ -1,9 +1,17 @@
+import CloseIcon from "../../assets/icons/close";
 import { ITextfield } from "../../Models/Interfaces";
 import "./styles.scss";
 
-const Textfield = ({ label, onChange, value, placeholder }: ITextfield) => {
+const Textfield = ({
+  label,
+  onChange,
+  value,
+  placeholder,
+  className,
+  clear,
+}: ITextfield) => {
   return (
-    <div className="input-container">
+    <div className={`${className} input-container`}>
       <label htmlFor="input" className="input-container__label">
         {label}
       </label>
@@ -15,6 +23,17 @@ const Textfield = ({ label, onChange, value, placeholder }: ITextfield) => {
         onChange={onChange}
         type="text"
       />
+      {clear && (
+        <span
+          aria-label="close-icon"
+          className="input-container__close"
+          role="button"
+          tabIndex={0}
+          onClick={() => onChange({ target: { value: "" } })}
+        >
+          <CloseIcon />
+        </span>
+      )}
     </div>
   );
 };

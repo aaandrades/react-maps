@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 .button-container {
-  background-color: $blue-200;
+  background-color: $blue-300;
   border-radius: 7px;
   padding: 11px;
   outline: none;
@@ -10,7 +10,11 @@
   transition: background 0.2s ease-in;
   font-size: 0.95rem;
   &:hover {
-    background-color: $blue-300;
+    background-color: $blue-350;
     transition: background 0.2s ease-in;
+  }
+
+  &:disabled {
+    background-color: $gray-300;
   }
 }
