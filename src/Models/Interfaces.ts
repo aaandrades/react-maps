@@ -22,6 +22,7 @@ export interface ITextfield {
   className?: string;
   placeholder: string;
   onChange(e: any): void;
+  onClear?(): void;
 }
 
 export interface IButton {

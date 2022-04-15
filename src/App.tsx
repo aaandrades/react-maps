@@ -8,6 +8,7 @@ import { points } from "./statics/DefaultPoints";
 const App = () => {
   const [maps, setMaps] = useState({
     points: points,
+    defaultPoints: points,
   });
 
   const properties = { maps, setMaps };

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Textfield from "../Textfield/Textfield";
 import Button from "../Button/Button";
 import { useMapContext } from "../../Context/context";
+import Options from "../Options/Options";
 
 export const SearchBar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -23,13 +24,23 @@ export const SearchBar = () => {
       points: mappedPoints,
     });
   };
+
+  const clearSearch = () => {
+    setSearch("");
+    setMaps({
+      ...maps,
+      points: maps.defaultPoints,
+    });
+  };
+
   return (
     <div className="search-bar">
       <div className="search-bar__search">
         <Textfield
           label="Look for something"
           value={search}
-          clear
+          clear={search !== ""}
+          onClear={clearSearch}
           placeholder="Ej: Bar"
           className="search-bar__textfield"
           onChange={(e) => setSearch(e.target?.value)}
@@ -55,7 +66,7 @@ export const SearchBar = () => {
       <div
         className={showSearchBar ? "search-bar__open" : "search-bar__closed"}
       >
-        Contenido
+        <Options />
       </div>
     </div>
   );
