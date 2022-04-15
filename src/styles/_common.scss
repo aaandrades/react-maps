@@ -20,3 +20,12 @@
   background: #8d8d8d;
   transition: backgroud-color 0.2s ease-in;
 }
+
+.pointer {
+  cursor: pointer;
+  height: fit-content;
+}
+
+.swal2-container {
+  z-index: 2000;
+}

@@ -9,12 +9,31 @@
     height: 80px;
     margin: 15px 10px 15px 0px;
     padding: 10px;
-    // border-radius: 7px;
-    // border: 1px solid $gray-300;
+    border-top: 1px solid $gray-100;
+    display: flex;
+    justify-content: space-between;
+    transition: transform 100ms ease-in;
 
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: inset 9.91px 9.91px 15px #e8e8e8,
-      inset -9.91px -9.91px 15px #ffffff;
+    &:last-child {
+      border-bottom: 1px solid $gray-100;
+    }
+
+    &:hover {
+      transform: scale3d(1.03, 1.03, 1.03);
+      transition: transform 100ms ease-in;
+    }
+  }
+  &__content {
+    margin-left: 15px;
+    p {
+      color: $gray-300;
+    }
+  }
+
+  &__selection {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
   }
 }

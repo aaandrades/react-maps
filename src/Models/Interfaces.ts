@@ -31,3 +31,13 @@ export interface IButton {
   className?: string;
   onClick(e: any): void;
 }
+
+export interface ISvgImages {
+  width: string;
+  height: string;
+}
+
+export interface IIcons {
+  onClick?(): void;
+  className?: string;
+}

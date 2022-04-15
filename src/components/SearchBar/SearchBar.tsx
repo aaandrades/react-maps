@@ -60,7 +60,7 @@ export const SearchBar = () => {
           className="search-bar__options"
           onClick={() => setShowSearchBar(!showSearchBar)}
         >
-          More options
+          {showSearchBar ? "Close" : "More options"}
         </span>
       </div>
       <div
