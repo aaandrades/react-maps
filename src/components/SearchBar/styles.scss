@@ -24,7 +24,7 @@
 
   &__search {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
   }
 
   &__button {
@@ -41,7 +41,9 @@
     border-radius: 5px;
     color: $blue-300;
     cursor: pointer;
+    transition: background-color 0.2s ease-in;
     &:hover {
+      transition: background-color 0.2s ease-in-out;
       background-color: $blue-100;
     }
   }
@@ -49,11 +51,10 @@
   &__footer {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
   }
 
   &__open {
-    height: 65vh;
+    height: 50vh;
     transition: height 100ms ease-in;
   }
 

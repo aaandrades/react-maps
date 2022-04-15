@@ -8,6 +8,7 @@ const Textfield = ({
   value,
   placeholder,
   className,
+  onClear,
   clear,
 }: ITextfield) => {
   return (
@@ -29,7 +30,7 @@ const Textfield = ({
           className="input-container__close"
           role="button"
           tabIndex={0}
-          onClick={() => onChange({ target: { value: "" } })}
+          onClick={onClear}
         >
           <CloseIcon />
         </span>

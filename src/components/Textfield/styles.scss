@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   margin: 10px 0px;
+  position: relative;
   &__label {
     cursor: pointer;
     padding-left: 8px;
@@ -12,7 +13,7 @@
     color: $gray-600;
   }
   &__input {
-    padding: 10px;
+    padding: 10px 30px 10px 10px;
     font-size: 1rem;
     border-radius: 7px;
     outline-color: $blue-300;
@@ -26,10 +27,9 @@
 
   &__close {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 5px;
+    top: 31px;
     cursor: pointer;
-    color: $gray-600;
     font-size: 1.2rem;
   }
 }

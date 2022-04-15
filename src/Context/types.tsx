@@ -7,4 +7,5 @@ export interface IContext {
 
 export interface IMaps {
   points: IPoint[];
+  defaultPoints: IPoint[];
 }
