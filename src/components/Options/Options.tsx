@@ -5,7 +5,13 @@ import LocationSvg from "../../assets/svg/location";
 import PolygonSearchSvg from "../../assets/svg/polygon";
 
 import "./styles.scss";
-import { Context, Polygon } from "../../providers/ModalProvider";
+import {
+  Context,
+  Creation,
+  Directions,
+  Location,
+  Polygon,
+} from "../../providers/ModalProvider";
 
 const Options = () => {
   const CUSTOM_WIDTH = "35%";
@@ -20,19 +26,25 @@ const Options = () => {
       case 1: {
         const modal = new Context(new Polygon());
         modal.showModal();
+        break;
       }
       case 2: {
-        console.log("case 1");
+        const modal = new Context(new Location());
+        modal.showModal();
+        break;
       }
       case 3: {
-        console.log("case 1");
+        const modal = new Context(new Directions());
+        modal.showModal();
+        break;
       }
       case 4: {
-        console.log("case 1");
+        const modal = new Context(new Creation());
+        modal.showModal();
+        break;
       }
-      default: {
+      default:
         return null;
-      }
     }
   };
 
