@@ -1,9 +1,10 @@
 import { useState } from "react";
-import "./App.scss";
 import { Map } from "./components/Map/Map";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { MapsContext } from "./Context/context";
-import { points } from "./statics/DefaultPoints";
+import { points } from "./Statics/DefaultPoints";
+import "./App.scss";
+import "sweetalert2/src/sweetalert2.scss";
 
 const App = () => {
   const [maps, setMaps] = useState({

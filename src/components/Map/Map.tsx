@@ -7,7 +7,7 @@ import {
   Polygon,
   useMapEvent,
 } from "react-leaflet";
-import { points } from "../../statics/DefaultPoints";
+import { points } from "../../Statics/DefaultPoints";
 import { IPoint } from "../../Models/Interfaces";
 import "./styles.scss";
 import { useMapContext } from "../../Context/context";
