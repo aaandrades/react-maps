@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import OptionsIcon from "../../assets/icons/options";
 import "./styles.scss";
 import { useMapContext } from "../../Context/context";
+import Points from "../Points/Points";
 
 const Information: React.FunctionComponent = () => {
   const [isDragging, setIsDragging] = useState(false);
@@ -58,7 +59,9 @@ const Information: React.FunctionComponent = () => {
       <motion.div
         className="information-container__content"
         style={{ height: mHeight }}
-      ></motion.div>
+      >
+        <Points height={mHeight} />
+      </motion.div>
     </div>
   );
 };
