@@ -29,3 +29,11 @@
 .swal2-container {
   z-index: 2000;
 }
+
+@mixin full-screen {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+}

@@ -22,6 +22,7 @@ export const SearchBar = () => {
     setMaps({
       ...maps,
       points: mappedPoints,
+      showDetails: true,
     });
   };
 
