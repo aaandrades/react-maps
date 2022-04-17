@@ -9,6 +9,7 @@ Web application to manage geographic information throw Leaflet library and OpenS
 
 ### :sparkles: Features
 
+- Maps
 - Search points
 - Geocoding
 
@@ -23,6 +24,7 @@ Web application to manage geographic information throw Leaflet library and OpenS
 - Leaflet: ^1.7.1
 - React-leaflet: ^3.2.5
 - vite: ^2.8.0
+- sweetalert2: 11.4.8
 
 ### :bulb: Run the App
 

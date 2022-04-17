@@ -5,11 +5,13 @@ import { MapsContext } from "./Context/context";
 import { points } from "./Statics/DefaultPoints";
 import "./App.scss";
 import "sweetalert2/src/sweetalert2.scss";
+import Information from "./components/Information/Information";
 
 const App = () => {
   const [maps, setMaps] = useState({
     points: points,
     defaultPoints: points,
+    showDetails: false,
   });
 
   const properties = { maps, setMaps };
@@ -18,6 +20,7 @@ const App = () => {
       <div className="app">
         <SearchBar />
         <Map />
+        <Information />
       </div>
     </MapsContext.Provider>
   );

@@ -1,12 +1,12 @@
 @import "../../styles/variables";
+@import "../../styles/common";
 
 #map {
-  height: 100%;
-  width: 100vw;
+  @include full-screen;
 }
 
 .map-container {
-  height: 100vh;
+  @include full-screen;
 }
 
 .leaflet-left {

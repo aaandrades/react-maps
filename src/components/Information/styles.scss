@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.information-container {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1100;
+
+  &__content {
+    background-color: $white;
+    width: 95%;
+    border-radius: 20px 20px 0px 0px;
+    -webkit-box-shadow: 0px 0px 6px 4px rgba(0, 0, 0, 0.26);
+    box-shadow: 0px 0px 6px 4px rgba(0, 0, 0, 0.26);
+  }
+
+  &__icon {
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -20px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: $white;
+    z-index: 1101;
+  }
+}
