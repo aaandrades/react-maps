@@ -41,3 +41,7 @@ export interface IIcons {
   onClick?(): void;
   className?: string;
 }
+
+export interface IPointDetails {
+  point: IPoint;
+}
