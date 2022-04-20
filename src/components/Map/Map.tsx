@@ -7,49 +7,52 @@ import {
   Polygon,
   useMapEvent,
 } from "react-leaflet";
-import { points } from "../../statics/DefaultPoints";
+import { points } from "../../Statics/DefaultPoints";
 import { IPoint } from "../../Models/Interfaces";
+import "./styles.scss";
+import { useMapContext } from "../../Context/context";
 
 export const Map = () => {
   const [markers, setMarkers] = useState<IPoint[]>(points);
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
   const [drawPolygon, setDrawPolygon] = useState<any>(false);
 
+  const { maps, setMaps } = useMapContext();
   const RenderMarks = () => {
     const map = useMapEvent("click", (event) => {
       setPolygonPoints([
         ...polygonPoints,
         [event.latlng.lat, event.latlng.lng],
       ]);
-      setMarkers([
-        ...markers,
-        {
-          name: "new",
-          area: 123,
-          valueM2: 32,
-          location: {
-            type: "Point",
-            coordinates: [event.latlng.lng, event.latlng.lat],
-          },
-        },
-      ]);
+      // setMarkers([
+      //   ...markers,
+      //   {
+      //     name: "new",
+      //     area: 123,
+      //     valueM2: 32,
+      //     location: {
+      //       type: "Point",
+      //       coordinates: [event.latlng.lng, event.latlng.lat],
+      //     },
+      //   },
+      // ]);
     });
     return null;
   };
 
   return (
     <div id="map">
-      <button onClick={() => setDrawPolygon(!drawPolygon)}>Set Drawing</button>
       <MapContainer
         center={[40.7326897662857, -73.92562866210939]}
         zoom={11}
-        className="contenido"
+        tap={false}
+        className="map-container"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {markers.map((marker) => (
+        {maps.points.map((marker) => (
           <Marker
             key={marker._id.$oid}
             position={[

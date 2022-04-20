@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+@import "../../styles/common";
+
+#map {
+  @include full-screen;
+}
+
+.map-container {
+  @include full-screen;
+}
+
+.leaflet-left {
+  left: 95vw;
+}
+
+.leaflet-top {
+  top: 90vh;
+  @media screen and (max-width: $mobile-600) {
+    display: none;
+  }
+}

@@ -1,0 +1,39 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #bbb;
+  transition: backgroud-color 0.2s ease-in;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8d8d8d;
+  transition: backgroud-color 0.2s ease-in;
+}
+
+.pointer {
+  cursor: pointer;
+  height: fit-content;
+}
+
+.swal2-container {
+  z-index: 2000;
+}
+
+@mixin full-screen {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+}

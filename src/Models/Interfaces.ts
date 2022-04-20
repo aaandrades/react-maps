@@ -3,9 +3,45 @@ export interface ILocation {
   coordinates: Array<number>;
 }
 
+interface IID {
+  $oid: string;
+}
 export interface IPoint {
-  name: string;
-  area: number;
-  valueM2: number;
+  _id: IID;
+  description: string;
+  minValue: number;
+  maxValue: number;
   location: ILocation;
+  name: string;
+}
+
+export interface ITextfield {
+  label: string;
+  clear?: boolean;
+  value: string;
+  className?: string;
+  placeholder: string;
+  onChange(e: any): void;
+  onClear?(): void;
+}
+
+export interface IButton {
+  children: JSX.Element | string;
+  disabled?: boolean;
+  className?: string;
+  onClick(e: any): void;
+}
+
+export interface ISvgImages {
+  width: string;
+  height: string;
+}
+
+export interface IIcons {
+  onClick?(): void;
+  className?: string;
+}
+
+export interface IPointDetails {
+  point: IPoint;
 }

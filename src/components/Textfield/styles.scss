@@ -1,0 +1,35 @@
+@import "../../styles/variables";
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+  position: relative;
+  &__label {
+    cursor: pointer;
+    padding-left: 8px;
+    margin-bottom: 3px;
+    font-size: 1rem;
+    color: $gray-600;
+  }
+  &__input {
+    padding: 10px 30px 10px 10px;
+    font-size: 1rem;
+    border-radius: 7px;
+    outline-color: $blue-300;
+    border: 1px solid $gray-300;
+
+    &::-webkit-input-placeholder {
+      font-size: 0.9rem;
+      line-height: 3;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+}
