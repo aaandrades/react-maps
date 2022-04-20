@@ -16,15 +16,18 @@ Web application to manage geographic information throw Leaflet library and OpenS
 ### :alembic: Core Concepts
 
 - Geographic Information System
+- Google maps (Look and feel)
 
 ### :construction: Made with
 
 - React ^17.0.2
+- Typescript: ^4.5.4,
 - Sass ^1.49.9
+- Framer-motion": ^6.3.0,
 - Leaflet: ^1.7.1
 - React-leaflet: ^3.2.5
-- vite: ^2.8.0
-- sweetalert2: 11.4.8
+- Vite: ^2.8.0
+- Sweetalert2: 11.4.8
 
 ### :bulb: Run the App
 
