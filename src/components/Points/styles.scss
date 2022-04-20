@@ -1,6 +1,6 @@
 .points-container {
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   overflow-y: auto;
-  margin: 20px 20px 0px 20px;
 }
