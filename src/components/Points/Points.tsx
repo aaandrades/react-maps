@@ -4,9 +4,7 @@ import { IPoint } from "../../Models/Interfaces";
 import "./styles.scss";
 
 const Points = ({ height }: any) => {
-  const { maps, setMaps } = useMapContext();
-
-  console.log(height.get());
+  const { maps } = useMapContext();
 
   return (
     <div
