@@ -7,6 +7,8 @@
 
 Web application to manage geographic information throw Leaflet library and OpenStreetMap layer.
 
+<img src="documentation/main.png"  alt="Detail screen" width="550" height="400" style=border-radius:6px>
+
 ### :sparkles: Features
 
 - Search points
