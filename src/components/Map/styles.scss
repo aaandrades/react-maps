@@ -7,6 +7,16 @@
 
 .map-container {
   @include full-screen;
+  &__draw {
+    position: absolute;
+    top: calc(50% - 100px);
+    right: 5px;
+    z-index: 1059;
+    background-color: $white;
+    height: 200px;
+    border-radius: 6px;
+    padding: 10px;
+  }
 }
 
 .leaflet-left {

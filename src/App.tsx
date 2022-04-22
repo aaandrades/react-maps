@@ -12,6 +12,7 @@ const App = () => {
     points: points,
     defaultPoints: points,
     showDetails: false,
+    currentAction: "",
   });
 
   const properties = { maps, setMaps };
