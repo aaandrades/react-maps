@@ -9,4 +9,9 @@ export interface IMaps {
   points: IPoint[];
   defaultPoints: IPoint[];
   showDetails: boolean;
+  currentAction: string;
+}
+
+export interface IOptions {
+  closeSearchBar?(): void;
 }

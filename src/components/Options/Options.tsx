@@ -12,13 +12,24 @@ import {
   Location,
   Polygon,
 } from "../../providers/ModalProvider";
+import { OptionsTypes } from "../../helpers/constants";
+import { useMapContext } from "../../Context/context";
+import { IOptions } from "../../Context/types";
 
-const Options = () => {
+const Options = ({ closeSearchBar = () => {} }: IOptions) => {
   const CUSTOM_WIDTH = "35%";
   const CUSTOM_HEIGHT = "100%";
 
-  const handleClick = () => {
-    console.log("click");
+  const { maps, setMaps } = useMapContext();
+
+  const handleClick = (key: number) => {
+    const action: string = OptionsTypes[key];
+    setMaps({
+      ...maps,
+      points: [],
+      currentAction: action,
+    });
+    closeSearchBar();
   };
 
   const onHelpStrategy = (key: number) => {
@@ -53,7 +64,7 @@ const Options = () => {
       <div className="options-container__item">
         <span
           className="options-container__selection"
-          onClick={() => handleClick()}
+          onClick={() => handleClick(1)}
           role="button"
           tabIndex={0}
         >
@@ -68,7 +79,7 @@ const Options = () => {
       <div className="options-container__item">
         <span
           className="options-container__selection"
-          onClick={() => handleClick()}
+          onClick={() => handleClick(2)}
           role="button"
           tabIndex={0}
         >
@@ -83,7 +94,7 @@ const Options = () => {
       <div className="options-container__item">
         <span
           className="options-container__selection"
-          onClick={() => handleClick()}
+          onClick={() => handleClick(3)}
           role="button"
           tabIndex={0}
         >
@@ -98,7 +109,7 @@ const Options = () => {
       <div className="options-container__item">
         <span
           className="options-container__selection"
-          onClick={() => handleClick()}
+          onClick={() => handleClick(4)}
           role="button"
           tabIndex={0}
         >

@@ -34,6 +34,10 @@ export const SearchBar = () => {
     });
   };
 
+  const closeSearchBar = () => {
+    setShowSearchBar(false);
+  };
+
   return (
     <div className="search-bar">
       <div className="search-bar__search">
@@ -67,7 +71,7 @@ export const SearchBar = () => {
       <div
         className={showSearchBar ? "search-bar__open" : "search-bar__closed"}
       >
-        <Options />
+        <Options closeSearchBar={closeSearchBar} />
       </div>
     </div>
   );
