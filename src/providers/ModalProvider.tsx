@@ -69,4 +69,13 @@ interface Strategy {
   };
 }
 
-export { Polygon, Location, Directions, Creation, Context };
+const throwModal = (title: string, text: string) => {
+  Swal.fire({
+    title,
+    text,
+    confirmButtonText: "Got it!",
+    confirmButtonColor: "#0082c9",
+  });
+};
+
+export { Polygon, Location, Directions, Creation, Context, throwModal };

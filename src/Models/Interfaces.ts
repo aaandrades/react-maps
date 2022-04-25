@@ -45,3 +45,7 @@ export interface IIcons {
 export interface IPointDetails {
   point: IPoint;
 }
+
+export interface IIcon {
+  color?: string;
+}
