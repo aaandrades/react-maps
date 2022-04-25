@@ -71,7 +71,7 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
           <PolygonSearchSvg width={CUSTOM_WIDTH} height={CUSTOM_HEIGHT} />
           <div className="options-container__content">
             <h3>Search by polygon</h3>
-            <p>Just a description on how to use the functions</p>
+            <p>Search points based on a polygon that you draw!</p>
           </div>
         </span>
         <HelpIcon className="pointer" onClick={() => onHelpStrategy(1)} />
@@ -86,7 +86,7 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
           <LocationSvg width={CUSTOM_WIDTH} height={CUSTOM_HEIGHT} />
           <div className="options-container__content">
             <h3>Search by location</h3>
-            <p>Just a description on how to use the functions</p>
+            <p>Search a point based on your location given a radius.</p>
           </div>
         </span>
         <HelpIcon className="pointer" onClick={() => onHelpStrategy(2)} />
@@ -101,7 +101,7 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
           <DirectionsSvg width={CUSTOM_WIDTH} height={CUSTOM_HEIGHT} />
           <div className="options-container__content">
             <h3>Directions</h3>
-            <p>Just a description on how to use the functions</p>
+            <p>Select a point and get the directions from your location!</p>
           </div>
         </span>
         <HelpIcon className="pointer" onClick={() => onHelpStrategy(3)} />
@@ -116,7 +116,7 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
           <CreateSvg width={CUSTOM_WIDTH} height={CUSTOM_HEIGHT} />
           <div className="options-container__content">
             <h3>Create new point</h3>
-            <p>Just a description on how to use the functions</p>
+            <p>I think is not necessary to add a descripcion.</p>
           </div>
         </span>
         <HelpIcon className="pointer" onClick={() => onHelpStrategy(4)} />

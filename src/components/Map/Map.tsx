@@ -12,9 +12,14 @@ import { IPoint } from "../../Models/Interfaces";
 import "./styles.scss";
 import { useMapContext } from "../../Context/context";
 import { isMarkerInsidePolygon } from "../../helpers/helpers";
+import DrawIcon from "../../assets/icons/draw";
+import EraseIcon from "../../assets/icons/erase";
+import SearchIcon from "../../assets/icons/search";
+import StopIcon from "../../assets/icons/stop";
+import RestartIcon from "../../assets/icons/restart";
+import { throwModal } from "../../providers/ModalProvider";
 
 export const Map = () => {
-  const [markers, setMarkers] = useState<IPoint[]>(points);
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
   const [drawPolygon, setDrawPolygon] = useState<any>(false);
 
@@ -37,21 +42,77 @@ export const Map = () => {
         newPoints.push(point);
       }
     });
+    if (!newPoints.length) {
+      throwModal(
+        "No results :(",
+        "We can't find results for your search, please try again"
+      );
+      setMaps({
+        ...maps,
+        showDetails: false,
+      });
+    } else {
+      setMaps({
+        ...maps,
+        points: newPoints,
+        showDetails: true,
+      });
+    }
+  };
+
+  const deleteLastPoint = () => {
+    let newPolints = [...polygonPoints];
+    newPolints = newPolints.slice(0, -1);
+    setPolygonPoints(newPolints);
+  };
+
+  const restartPolygon = () => {
+    setPolygonPoints([]);
     setMaps({
       ...maps,
-      points: newPoints,
-      showDetails: true,
+      points: [],
+      showDetails: false,
     });
-    console.log(newPoints);
   };
 
   const renderPolygonActions = () => {
     return (
       <section className="map-container__draw">
-        <button onClick={() => setDrawPolygon(!drawPolygon)}>
-          {drawPolygon ? "Stop" : "Draw"}
+        <button
+          className="map-container__button pointer"
+          onClick={() => setDrawPolygon(!drawPolygon)}
+        >
+          {drawPolygon ? (
+            <>
+              <StopIcon color="#0082c9" /> Stop
+            </>
+          ) : (
+            <>
+              <DrawIcon color="#0082c9" /> Draw
+            </>
+          )}
         </button>
-        <button onClick={() => evaluatePoints()}>Search</button>
+        <button
+          className="map-container__button pointer"
+          onClick={() => deleteLastPoint()}
+        >
+          <EraseIcon color="#0082c9" />
+          Delete
+        </button>
+        <button
+          className="map-container__button pointer"
+          onClick={() => restartPolygon()}
+        >
+          <RestartIcon color="#0082c9" />
+          Restart
+        </button>
+        <button
+          className="map-container__button pointer"
+          onClick={() => evaluatePoints()}
+        >
+          <SearchIcon color="#0082c9" />
+          Search
+        </button>
       </section>
     );
   };
