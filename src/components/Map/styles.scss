@@ -5,8 +5,17 @@
   @include full-screen;
 }
 
+.itinerary {
+  background-color: $white;
+  padding: 10px 20px;
+  bottom: 50vh;
+  overflow: auto;
+  height: 200px;
+}
+
 .map-container {
   @include full-screen;
+
   &__draw {
     position: absolute;
     top: calc(50% - 100px);
@@ -30,6 +39,7 @@
     border-radius: 6px;
     background-color: transparent;
     transition: background 0.2s ease-in;
+
     &:hover {
       background-color: $blue-100;
       transition: background 0.2s ease-out;
@@ -43,6 +53,7 @@
 
 .leaflet-top {
   top: 90vh;
+
   @media screen and (max-width: $mobile-600) {
     display: none;
   }

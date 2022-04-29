@@ -7,8 +7,6 @@ import {
   Polygon,
   useMapEvent,
 } from "react-leaflet";
-import { points } from "../../Statics/DefaultPoints";
-import { IPoint } from "../../Models/Interfaces";
 import "./styles.scss";
 import { useMapContext } from "../../Context/context";
 import { isMarkerInsidePolygon } from "../../helpers/helpers";
@@ -18,6 +16,8 @@ import SearchIcon from "../../assets/icons/search";
 import StopIcon from "../../assets/icons/stop";
 import RestartIcon from "../../assets/icons/restart";
 import { throwModal } from "../../providers/ModalProvider";
+import RoutingMachine from "./Routes";
+import { IPoint } from "../../Models/Interfaces";
 
 export const Map = () => {
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
@@ -36,7 +36,7 @@ export const Map = () => {
   };
 
   const evaluatePoints = () => {
-    let newPoints: Array<any> = [];
+    let newPoints: IPoint[] = [];
     maps.defaultPoints.forEach((point) => {
       if (isMarkerInsidePolygon(point.location.coordinates, polygonPoints)) {
         newPoints.push(point);
@@ -148,6 +148,18 @@ export const Map = () => {
           ))}
           {drawPolygon && <RenderMarks />}
           <Polygon positions={polygonPoints} />
+          {maps.currentAction === "directions" && (
+            <RoutingMachine
+              pointA={{
+                lat: 40.783124,
+                long: -73.981005,
+              }}
+              pointB={{
+                lat: 40.789283,
+                long: -73.9487429,
+              }}
+            />
+          )}
         </MapContainer>
       </div>
       {maps.currentAction === "draw" && renderPolygonActions()}
