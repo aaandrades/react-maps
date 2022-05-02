@@ -26,7 +26,7 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
     const action: string = OptionsTypes[key];
     setMaps({
       ...maps,
-      points: [],
+      points: action === "directions" ? maps.points : [],
       currentAction: action,
     });
     closeSearchBar();

@@ -19,6 +19,7 @@ import { throwModal } from "../../providers/ModalProvider";
 import RoutingMachine from "./Routes";
 import { IGeography, IPoint, IStepDirections } from "../../Models/Interfaces";
 import useModal from "../../hooks/useModal";
+import PolygonActions from "../PolygonActions/PolygonActions";
 
 export const Map = () => {
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
@@ -98,19 +99,15 @@ export const Map = () => {
   const evaluatePoints = () => {
     let newPoints: IPoint[] = [];
     maps.defaultPoints.forEach((point) => {
-      if (isMarkerInsidePolygon(point.location.coordinates, polygonPoints)) {
+      if (isMarkerInsidePolygon(point.location.coordinates, polygonPoints))
         newPoints.push(point);
-      }
     });
     if (!newPoints.length) {
       throwModal(
         "No results :(",
         "We can't find results for your search, please try again"
       );
-      setMaps({
-        ...maps,
-        showDetails: false,
-      });
+      setMaps({ ...maps, showDetails: false });
     } else {
       setMaps({
         ...maps,
@@ -135,46 +132,16 @@ export const Map = () => {
     });
   };
 
-  const renderPolygonActions = () => {
-    return (
-      <section className="map-container__draw">
-        <button
-          className="map-container__button pointer"
-          onClick={() => setDrawPolygon(!drawPolygon)}
-        >
-          {drawPolygon ? (
-            <>
-              <StopIcon color="#0082c9" /> Stop
-            </>
-          ) : (
-            <>
-              <DrawIcon color="#0082c9" /> Draw
-            </>
-          )}
-        </button>
-        <button
-          className="map-container__button pointer"
-          onClick={() => deleteLastPoint()}
-        >
-          <EraseIcon color="#0082c9" />
-          Delete
-        </button>
-        <button
-          className="map-container__button pointer"
-          onClick={() => restartPolygon()}
-        >
-          <RestartIcon color="#0082c9" />
-          Restart
-        </button>
-        <button
-          className="map-container__button pointer"
-          onClick={() => evaluatePoints()}
-        >
-          <SearchIcon color="#0082c9" />
-          Search
-        </button>
-      </section>
-    );
+  const enableDirections = (point: any) => {
+    console.log(point);
+    setUserSelection({
+      lat: point.latlng.lat,
+      long: point.latlng.lng,
+    });
+    setDirections({
+      firstStep: true,
+      secondStep: true,
+    });
   };
 
   return (
@@ -193,15 +160,22 @@ export const Map = () => {
           {maps.points.map((marker) => (
             <Marker
               key={marker._id.$oid}
+              eventHandlers={{
+                click: (e) => {
+                  if (directions.firstStep) enableDirections(e);
+                },
+              }}
               position={[
                 marker.location.coordinates[1],
                 marker.location.coordinates[0],
               ]}
             >
-              <Popup>
-                <h1>{marker.name}</h1>
-                <p>{marker.description}</p>
-              </Popup>
+              {!directions.firstStep && (
+                <Popup>
+                  <h1>{marker.name}</h1>
+                  <p>{marker.description}</p>
+                </Popup>
+              )}
             </Marker>
           ))}
           {drawPolygon && <RenderMarks />}
@@ -220,7 +194,15 @@ export const Map = () => {
           )}
         </MapContainer>
       </div>
-      {maps.currentAction === "draw" && renderPolygonActions()}
+      {maps.currentAction === "draw" && (
+        <PolygonActions
+          drawPolygon={drawPolygon}
+          setDrawPolygon={setDrawPolygon}
+          deleteLastPoint={deleteLastPoint}
+          restartPolygon={restartPolygon}
+          evaluatePoints={evaluatePoints}
+        />
+      )}
     </>
   );
 };
