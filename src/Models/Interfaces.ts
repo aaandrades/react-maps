@@ -49,3 +49,13 @@ export interface IPointDetails {
 export interface IIcon {
   color?: string;
 }
+
+export interface IGeography {
+  lat: number | null;
+  long: number | null;
+}
+
+export interface IStepDirections {
+  firstStep: boolean | null;
+  secondStep: boolean | null;
+}

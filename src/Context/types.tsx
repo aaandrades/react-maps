@@ -2,7 +2,9 @@ import { IPoint } from "../Models/Interfaces";
 
 export interface IContext {
   maps: IMaps;
+  loading: boolean;
   setMaps(e: any): void;
+  setLoading(e: any): void;
 }
 
 export interface IMaps {
