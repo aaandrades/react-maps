@@ -6,8 +6,10 @@ export const MapsContext = createContext<IContext>({
     points: [],
     defaultPoints: [],
     showDetails: true,
-    currentAction: ''
+    currentAction: "",
   },
+  loading: false, 
+  setLoading: () => {},
   setMaps: () => {},
 });
 

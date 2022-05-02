@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -17,13 +17,73 @@ import StopIcon from "../../assets/icons/stop";
 import RestartIcon from "../../assets/icons/restart";
 import { throwModal } from "../../providers/ModalProvider";
 import RoutingMachine from "./Routes";
-import { IPoint } from "../../Models/Interfaces";
+import { IGeography, IPoint, IStepDirections } from "../../Models/Interfaces";
+import useModal from "../../hooks/useModal";
 
 export const Map = () => {
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
   const [drawPolygon, setDrawPolygon] = useState<any>(false);
+  const [directions, setDirections] = useState<IStepDirections>({
+    firstStep: null,
+    secondStep: null,
+  });
+  const [userLocation, setUserLocation] = useState<IGeography>({
+    lat: null,
+    long: null,
+  });
+  const [userSelection, setUserSelection] = useState<IGeography>({
+    lat: null,
+    long: null,
+  });
 
   const { maps, setMaps } = useMapContext();
+  const { enableLoading, disableLoading } = useModal();
+
+  const getCoords = async () => {
+    try {
+      const loc: any = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+          (location) => resolve(location),
+          (error) => reject(error)
+        );
+      });
+      return {
+        lat: loc.coords.latitude,
+        lon: loc.coords.longitude,
+      };
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getCoordsMiddleware = async () => {
+    enableLoading();
+    try {
+      const loc = await getCoords();
+      disableLoading();
+      setUserLocation({
+        lat: loc.lat,
+        long: loc.lon,
+      });
+      setDirections({ firstStep: true, secondStep: false });
+    } catch (error) {
+      disableLoading();
+      setMaps({
+        ...maps,
+        currentAction: "",
+      });
+      throwModal(
+        "Location error",
+        "We have encountered an error while getting your location. Please refresh the page and try again!"
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (maps.currentAction === "directions") {
+      getCoordsMiddleware();
+    }
+  }, [maps.currentAction]);
 
   const RenderMarks = () => {
     useMapEvent("click", (event) => {
@@ -139,20 +199,18 @@ export const Map = () => {
               ]}
             >
               <Popup>
-                <div>
-                  <h1>{marker.name}</h1>
-                  <p>{marker.description}</p>
-                </div>
+                <h1>{marker.name}</h1>
+                <p>{marker.description}</p>
               </Popup>
             </Marker>
           ))}
           {drawPolygon && <RenderMarks />}
           <Polygon positions={polygonPoints} />
-          {maps.currentAction === "directions" && (
+          {directions.secondStep && (
             <RoutingMachine
               pointA={{
-                lat: 40.783124,
-                long: -73.981005,
+                lat: userLocation.lat,
+                long: userLocation.long,
               }}
               pointB={{
                 lat: 40.789283,

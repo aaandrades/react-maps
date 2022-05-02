@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Map } from "./components/Map/Map";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { MapsContext } from "./Context/context";
-import { points } from "./Statics/DefaultPoints";
 import "./App.scss";
 import "sweetalert2/src/sweetalert2.scss";
 import Information from "./components/Information/Information";
+import LoaderProvider from "./components/Loader/Loader";
+import { points } from "./statics/DefaultPoints";
 
 const App = () => {
   const [maps, setMaps] = useState({
@@ -15,13 +16,16 @@ const App = () => {
     currentAction: "",
   });
 
-  const properties = { maps, setMaps };
+  const [loading, setLoading] = useState(false);
+
+  const properties = { maps, setMaps, loading, setLoading };
   return (
     <MapsContext.Provider value={properties}>
       <div className="app">
         <SearchBar />
         <Map />
         <Information />
+        <LoaderProvider />
       </div>
     </MapsContext.Provider>
   );
