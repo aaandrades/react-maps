@@ -115,6 +115,7 @@ export const Map = () => {
         showDetails: true,
       });
     }
+    setDrawPolygon(false);
   };
 
   const deleteLastPoint = () => {

@@ -12,7 +12,7 @@ const PointDetails = ({ point }: IPointDetails) => {
       >
         {point.description}
       </p>
-      <Button onClick={() => console.log("Open details")}>Detalle</Button>
+      <Button onClick={() => console.log("Open details")}>Details</Button>
     </div>
   );
 };
