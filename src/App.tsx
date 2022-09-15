@@ -27,6 +27,7 @@ const App = () => {
         <Information />
         <LoaderProvider />
       </div>
+      <div id="modal-root"></div>
     </MapsContext.Provider>
   );
 };

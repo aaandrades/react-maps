@@ -1,6 +1,12 @@
+@import "../../styles/variables";
+
 .modal-container {
   position: fixed;
-  z-index: 1111 !important;
+  z-index: 1111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   top: 0px;
   bottom: 0px;
@@ -11,5 +17,32 @@
   backdrop-filter: blur(10px);
 
   &__content {
+    background-color: $white;
+    border-radius: 6px;
+    padding: 0px 20px 30px 30px;
+    width: 50%;
+
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8);
+
+    animation: zoomIn;
+    animation-duration: 0.2s;
+
+    &--header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--close-button {
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  }
+
+  &__closing {
+    animation: zoomOut;
+    animation-duration: 0.5s;
   }
 }

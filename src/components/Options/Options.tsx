@@ -129,7 +129,10 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
           <HelpIcon className="pointer" onClick={() => onHelpStrategy(4)} />
         </div>
       </section>
-      <CreationModal show={showCreationModal} />
+      <CreationModal
+        show={showCreationModal}
+        onClose={() => setShowCreationModal(false)}
+      />
     </>
   );
 };

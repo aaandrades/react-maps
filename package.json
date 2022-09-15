@@ -8,6 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.5",
+    "animate.css": "^4.1.1",
     "framer": "^2.1.1",
     "framer-motion": "^6.3.0",
     "leaflet": "^1.7.1",
