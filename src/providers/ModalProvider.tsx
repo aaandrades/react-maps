@@ -54,6 +54,15 @@ class DirectionsRoute implements Strategy {
   }
 }
 
+class LocationMaintenance implements Strategy {
+  public getModalInfo() {
+    return {
+      title: "Under construction",
+      text: "This feature it's currently under construction, please be pacient.",
+    };
+  }
+}
+
 class Directions implements Strategy {
   public getModalInfo() {
     return {
@@ -95,4 +104,5 @@ export {
   Context,
   throwModal,
   DirectionsRoute,
+  LocationMaintenance,
 };
