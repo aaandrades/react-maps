@@ -37,15 +37,13 @@ const createRoutineMachineLayer = (props: any) => {
         });
         return marker;
       },
-    }).on("routingerror", console.log("error"));
+    });
     return instance;
   } catch (error) {
-    console.log("fallee");
+    console.log(error);
   }
 };
 
-// try {
-// } catch (error) {}
 const RoutingMachine = createControlComponent(createRoutineMachineLayer);
 
 export default RoutingMachine;

@@ -10,16 +10,12 @@ import {
 import "./styles.scss";
 import { useMapContext } from "../../Context/context";
 import { isMarkerInsidePolygon } from "../../helpers/helpers";
-import DrawIcon from "../../assets/icons/draw";
-import EraseIcon from "../../assets/icons/erase";
-import SearchIcon from "../../assets/icons/search";
-import StopIcon from "../../assets/icons/stop";
-import RestartIcon from "../../assets/icons/restart";
 import { throwModal } from "../../providers/ModalProvider";
 import RoutingMachine from "./Routes";
 import { IGeography, IPoint, IStepDirections } from "../../Models/Interfaces";
 import useModal from "../../hooks/useModal";
 import PolygonActions from "../PolygonActions/PolygonActions";
+import { Button } from "@mui/material";
 
 export const Map = () => {
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
@@ -134,7 +130,6 @@ export const Map = () => {
   };
 
   const enableDirections = (point: any) => {
-    console.log(point);
     setUserSelection({
       lat: point.latlng.lat,
       long: point.latlng.lng,
@@ -143,6 +138,19 @@ export const Map = () => {
       firstStep: true,
       secondStep: true,
     });
+  };
+
+  const clearActions = () => {
+    setDirections({
+      firstStep: null,
+      secondStep: null,
+    });
+    setMaps({
+      ...maps,
+      currentAction: "",
+    });
+    setDrawPolygon(false);
+    setPolygonPoints([]);
   };
 
   return (
@@ -184,16 +192,27 @@ export const Map = () => {
           {directions.secondStep && (
             <RoutingMachine
               pointA={{
-                lat: userLocation.lat,
-                long: userLocation.long,
+                lat: 43.683412,
+                long: -79.541763,
+                // lat: userLocation.lat,
+                // long: userLocation.long,
               }}
               pointB={{
-                lat: 40.789283,
-                long: -73.9487429,
+                lat: userSelection.lat,
+                long: userSelection.long,
               }}
             />
           )}
         </MapContainer>
+        {maps.currentAction !== "" && (
+          <Button
+            className="disable-actions"
+            variant="contained"
+            onClick={() => clearActions()}
+          >
+            Close action
+          </Button>
+        )}
       </div>
       {maps.currentAction === "draw" && (
         <PolygonActions

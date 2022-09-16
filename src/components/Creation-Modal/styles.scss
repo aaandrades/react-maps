@@ -19,8 +19,9 @@
   &__content {
     background-color: $white;
     border-radius: 6px;
-    padding: 0px 20px 30px 30px;
+    padding: 0px 20px 30px 20px;
     width: 50%;
+    max-width: 650px;
 
     -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8);
     -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8);
@@ -28,6 +29,10 @@
 
     animation: zoomIn;
     animation-duration: 0.2s;
+
+    @media screen and (max-width: $mobile-600) {
+      width: 80%;
+    }
 
     &--header {
       display: flex;
@@ -38,6 +43,37 @@
     &--close-button {
       cursor: pointer;
       margin-top: 10px;
+    }
+
+    &--body {
+      display: flex;
+      flex-direction: column;
+      padding: 0px 20px;
+
+      p {
+        text-align: justify;
+        margin-bottom: 40px;
+      }
+    }
+
+    &--rows {
+      margin-bottom: 20px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--buttons {
+      margin-top: 30px;
+    }
+
+    &--inputs {
+      width: 48%;
+    }
+
+    &--main {
+      margin-right: 10px !important;
     }
   }
 

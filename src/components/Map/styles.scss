@@ -47,6 +47,15 @@
   }
 }
 
+.disable-actions {
+  position: absolute;
+  z-index: 2000;
+  top: 90%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
 .leaflet-left {
   left: 95vw;
 }

@@ -31,6 +31,7 @@ export const SearchBar = () => {
     setMaps({
       ...maps,
       points: maps.defaultPoints,
+      currentAction: "",
     });
   };
 
@@ -66,6 +67,14 @@ export const SearchBar = () => {
           onClick={() => setShowSearchBar(!showSearchBar)}
         >
           {showSearchBar ? "Close" : "More options"}
+        </span>
+        <span
+          role="button"
+          tabIndex={0}
+          className="search-bar__options"
+          onClick={() => clearSearch()}
+        >
+          Restart points
         </span>
       </div>
       <div

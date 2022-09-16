@@ -11,6 +11,7 @@ import {
   Directions,
   Location,
   Polygon,
+  DirectionsRoute,
 } from "../../providers/ModalProvider";
 import { OptionsTypes } from "../../helpers/constants";
 import { useMapContext } from "../../Context/context";
@@ -32,6 +33,10 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
       currentAction: action,
     });
     closeSearchBar();
+    if (action === "directions") {
+      const modal = new Context(new DirectionsRoute());
+      modal.showModal();
+    }
   };
 
   const onHelpStrategy = (key: number) => {

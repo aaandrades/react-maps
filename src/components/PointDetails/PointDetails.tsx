@@ -1,5 +1,4 @@
 import { IPointDetails } from "../../Models/Interfaces";
-import Button from "../Button/Button";
 import "./styles.scss";
 
 const PointDetails = ({ point }: IPointDetails) => {
@@ -12,7 +11,6 @@ const PointDetails = ({ point }: IPointDetails) => {
       >
         {point.description}
       </p>
-      <Button onClick={() => console.log("Open details")}>Details</Button>
     </div>
   );
 };

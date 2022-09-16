@@ -45,6 +45,15 @@ class Location implements Strategy {
   }
 }
 
+class DirectionsRoute implements Strategy {
+  public getModalInfo() {
+    return {
+      title: "Get directions",
+      text: "Please select the point that you prefer bellow and the app will give you the shortest route to the point.",
+    };
+  }
+}
+
 class Directions implements Strategy {
   public getModalInfo() {
     return {
@@ -78,4 +87,12 @@ const throwModal = (title: string, text: string) => {
   });
 };
 
-export { Polygon, Location, Directions, Creation, Context, throwModal };
+export {
+  Polygon,
+  Location,
+  Directions,
+  Creation,
+  Context,
+  throwModal,
+  DirectionsRoute,
+};
