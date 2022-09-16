@@ -31,6 +31,10 @@ Web application to manage geographic information throw Leaflet library and OpenS
 - Vite: ^2.8.0
 - Sweetalert2: 11.4.8
 
+### :hammer: Demostration
+
+You can enter directly to the link https://react-mapping.netlify.app/
+
 ### :bulb: Run the App
 
 To run locally, clone the repo, execute `npm install` and then `npm run dev`.
