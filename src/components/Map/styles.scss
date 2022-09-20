@@ -50,10 +50,10 @@
 .disable-actions {
   position: absolute;
   z-index: 2000;
-  top: 90%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  top: 80%;
+  left: 100%;
+  -webkit-transform: translate(-105%);
+  transform: translate(-105%);
 }
 
 .leaflet-left {

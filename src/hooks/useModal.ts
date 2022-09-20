@@ -1,6 +1,6 @@
 import { useMapContext } from "../Context/context";
 
-const useModal = () => {
+const useLoader = () => {
   const { setLoading } = useMapContext();
   const enableLoading = () => {
     setLoading(true);
@@ -15,4 +15,4 @@ const useModal = () => {
   };
 };
 
-export default useModal;
+export default useLoader;

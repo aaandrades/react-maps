@@ -24,7 +24,12 @@
 
   &__search {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    padding: 15px 0px 10px 0px;
+
+    button {
+      margin-left: 10px !important;
+    }
   }
 
   &__button {
@@ -55,6 +60,10 @@
   &__footer {
     width: 100%;
     display: flex;
+  }
+
+  &__options {
+    margin-right: 20px !important;
   }
 
   &__open {

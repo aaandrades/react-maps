@@ -13,9 +13,8 @@ import { isMarkerInsidePolygon } from "../../helpers/helpers";
 import { throwModal } from "../../providers/ModalProvider";
 import RoutingMachine from "./Routes";
 import { IGeography, IPoint, IStepDirections } from "../../Models/Interfaces";
-import useModal from "../../hooks/useModal";
+import useLoader from "../../hooks/useModal";
 import PolygonActions from "../PolygonActions/PolygonActions";
-import { Button } from "@mui/material";
 
 export const Map = () => {
   const [polygonPoints, setPolygonPoints] = useState<any>([]);
@@ -34,7 +33,7 @@ export const Map = () => {
   });
 
   const { maps, setMaps } = useMapContext();
-  const { enableLoading, disableLoading } = useModal();
+  const { enableLoading, disableLoading } = useLoader();
 
   const getCoords = async () => {
     try {
@@ -76,9 +75,26 @@ export const Map = () => {
     }
   };
 
+  const clearActions = () => {
+    setDirections({
+      firstStep: null,
+      secondStep: null,
+    });
+    setMaps({
+      ...maps,
+      currentAction: "",
+    });
+    setDrawPolygon(false);
+    setPolygonPoints([]);
+  };
+
   useEffect(() => {
     if (maps.currentAction === "directions") {
       getCoordsMiddleware();
+    }
+
+    if (maps.currentAction === "") {
+      clearActions();
     }
   }, [maps.currentAction]);
 
@@ -140,19 +156,6 @@ export const Map = () => {
     });
   };
 
-  const clearActions = () => {
-    setDirections({
-      firstStep: null,
-      secondStep: null,
-    });
-    setMaps({
-      ...maps,
-      currentAction: "",
-    });
-    setDrawPolygon(false);
-    setPolygonPoints([]);
-  };
-
   return (
     <>
       <div id="map">
@@ -204,15 +207,6 @@ export const Map = () => {
             />
           )}
         </MapContainer>
-        {maps.currentAction !== "" && (
-          <Button
-            className="disable-actions"
-            variant="contained"
-            onClick={() => clearActions()}
-          >
-            Close action
-          </Button>
-        )}
       </div>
       {maps.currentAction === "draw" && (
         <PolygonActions

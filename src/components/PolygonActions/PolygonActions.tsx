@@ -12,6 +12,7 @@ const PolygonActions = ({
   restartPolygon,
   evaluatePoints,
 }: any) => {
+  console.log("DRAW: ", drawPolygon);
   return (
     <section className="map-container__draw">
       <button

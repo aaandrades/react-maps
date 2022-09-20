@@ -37,6 +37,7 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
     if (action === "directions") {
       const modal = new Context(new DirectionsRoute());
       modal.showModal();
+      setMaps({ ...maps, points: maps.defaultPoints });
     }
     if (action === "location") {
       const modal = new Context(new LocationMaintenance());

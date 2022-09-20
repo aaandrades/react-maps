@@ -1,9 +1,8 @@
 import "./styles.scss";
 import { useState } from "react";
-import Textfield from "../Textfield/Textfield";
-import Button from "../Button/Button";
 import { useMapContext } from "../../Context/context";
 import Options from "../Options/Options";
+import { Button, TextField } from "@mui/material";
 
 export const SearchBar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -42,40 +41,36 @@ export const SearchBar = () => {
   return (
     <div className="search-bar">
       <div className="search-bar__search">
-        <Textfield
+        <TextField
+          id="search"
           label="Look for something"
+          variant="outlined"
           value={search}
-          clear={search !== ""}
-          onClear={clearSearch}
-          placeholder="Ej: Bar"
-          className="search-bar__textfield"
-          onChange={(e) => setSearch(e.target?.value)}
+          onChange={({ target }) => setSearch(target.value)}
+          size="small"
         />
         <Button
-          onClick={() => handleSearch()}
-          className="search-bar__button"
           disabled={!search}
+          onClick={() => handleSearch()}
+          variant="contained"
         >
           Search
         </Button>
       </div>
       <div className="search-bar__footer">
-        <span
-          role="button"
-          tabIndex={0}
+        <Button
+          size="small"
+          variant="outlined"
           className="search-bar__options"
           onClick={() => setShowSearchBar(!showSearchBar)}
         >
           {showSearchBar ? "Close" : "More options"}
-        </span>
-        <span
-          role="button"
-          tabIndex={0}
-          className="search-bar__options"
-          onClick={() => clearSearch()}
-        >
-          Restart points
-        </span>
+        </Button>
+        {maps.currentAction && (
+          <Button onClick={() => clearSearch()} size="small" color="error">
+            Close action
+          </Button>
+        )}
       </div>
       <div
         className={showSearchBar ? "search-bar__open" : "search-bar__closed"}
