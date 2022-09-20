@@ -28,18 +28,18 @@ const Options = ({ closeSearchBar = () => {} }: IOptions) => {
 
   const handleClick = (key: number) => {
     const action: string = OptionsTypes[key];
-    setMaps({
-      ...maps,
-      points: action === "directions" ? maps.points : [],
-      currentAction: action,
-    });
-    closeSearchBar();
-    if (action === "directions") {
-      const modal = new Context(new DirectionsRoute());
-      modal.showModal();
-      setMaps({ ...maps, points: maps.defaultPoints });
-    }
-    if (action === "location") {
+    if (action !== "location") {
+      setMaps({
+        ...maps,
+        points: action === "directions" ? maps.defaultPoints : [],
+        currentAction: action,
+      });
+      closeSearchBar();
+      if (action === "directions") {
+        const modal = new Context(new DirectionsRoute());
+        modal.showModal();
+      }
+    } else if (action === "location") {
       const modal = new Context(new LocationMaintenance());
       modal.showModal();
     }

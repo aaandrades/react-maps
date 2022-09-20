@@ -60,7 +60,6 @@ export const SearchBar = () => {
       <div className="search-bar__footer">
         <Button
           size="small"
-          variant="outlined"
           className="search-bar__options"
           onClick={() => setShowSearchBar(!showSearchBar)}
         >
